@@ -1,1 +1,30 @@
-joiner
+<div class="span24">
+    <h2>Сводная таблица</h2>
+    <table border="1" ui-tree>
+        <thead>
+            <tr>
+                <th>Страна</th>
+                <th>Команда</th>
+                <th ng-repeat="tour in allTours">
+                    {{tour}}
+                </th>
+            </tr>
+        </thead>
+         <tbody ui-tree-nodes ng-model="tables">    
+            <tr ng-repeat-start="table in tables" ui-tree-node>
+                <td ui-tree-handle rowspan="{{table.games.length + 1}}">
+                    {{$storage.translater[table.country]}}
+                </td>
+            </tr>
+                <tr ng-repeat-start="g in table.games">
+                    <td>
+                        {{g.command}}
+                    </td>
+                    <td ng-repeat="t in allTours">
+                        <input type="text" ng-model="g.tours[t]">
+                    </td>
+                </tr>
+                <tr ng-repeat-end ng-hide="true"></tr>
+            <tr ng-repeat-end ng-hide="true"></tr>
+    </table>
+</div>

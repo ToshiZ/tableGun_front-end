@@ -1,64 +1,7 @@
 'use strict';
 angular.module('TotalTablesApp')
-	.controller('TableController', ['$scope', '$filter', '$routeParams', '$localStorage', function($scope, $filter, $routeParams, $localStorage){
-        $scope.$storage = $localStorage.$default({
-            tables: [{
-                country: 'england',
-                games: [
-                    {
-                        command: '',
-                        tours: {}
-                    }
-                ],
-                tourHeaders: [],
-                commands: []
-            },
-            {
-                country: 'germany',
-                games: [
-                    {
-                        command: '',
-                        tours: {}
-                    }
-                ],
-                tourHeaders: [],
-                commands: []
-            },
-            {
-                country: 'italy',
-                games: [
-                    {
-                        command: '',
-                        tours: {}
-                    }
-                ],
-                tourHeaders: [],
-                commands: []
-            },
-            {
-                country: 'spain',
-                games: [
-                    {
-                        command: '',
-                        tours: {}
-                    }
-                ],
-                tourHeaders: [],
-                commands: []
-            },
-            {
-                country: 'france',
-                games: [
-                    {
-                        command: '',
-                        tours: {}
-                    }
-                ],
-                tourHeaders: [],
-                commands: []
-            }
-                    ]            
-        });
+	.controller('TableController', ['$scope', '$filter', '$routeParams', '$localStorage', function($scope, $filter, $routeParams, $localStorage){       
+        $scope.$storage = $localStorage;
 		$scope.country = $routeParams.country;
         $scope.table =  $filter('getBycountry')($scope.$storage.tables, $scope.country);
         $scope.addTour = function(){

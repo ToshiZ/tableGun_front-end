@@ -1,5 +1,5 @@
 'use strict';
-var TotalTablesApp = angular.module('TotalTablesApp', ['ngResource','ngRoute', 'ngStorage']);
+var TotalTablesApp = angular.module('TotalTablesApp', ['ngResource','ngRoute', 'ngStorage', 'ui.sortable', 'ui.tree']);
 TotalTablesApp.config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
 		 //  $locationProvider.html5Mode({
 			//   enabled: true,

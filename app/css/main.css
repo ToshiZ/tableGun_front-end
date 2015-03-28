@@ -1422,3 +1422,9 @@ footer .credits {
 .button.inline{
 	margin-left: 0px;
 }
+input[type="number"]{
+    width: 50px;
+    border-radius: 5px;
+    text-align: center;
+}
+

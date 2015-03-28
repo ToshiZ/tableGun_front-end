@@ -1,16 +1,21 @@
 'use strict';
 angular.module('TotalTablesApp')
-	.controller('TableController', ['$scope', '$filter', '$routeParams', '$localStorage', function($scope, $filter, $routeParams, $localStorage){       
-        $scope.$storage = $localStorage;
-		$scope.country = $routeParams.country;
-        $scope.table =  $filter('getBycountry')($scope.$storage.tables, $scope.country);
-        $scope.addTour = function(){
-            if($scope.table.tourHeaders.indexOf($scope.newTour) != -1){
-                $scope.newTour = '';
-            }else{
-                $scope.table.tourHeaders.push($scope.newTour.trim());
-                $scope.newTour = '';
-            }
+	.controller('TableController', ['$scope', '$filter', '$routeParams', '$localStorage', function($scope, $filter, $routeParams, $localStorage){ 
+        $scope.tablesInit = function(){
+            $scope.$storage = $localStorage;
+            $scope.country = $routeParams.country;
+            $scope.table =  $filter('getBycountry')($scope.$storage.tables, $scope.country);
+            $scope.addTour = function(){
+                if($scope.table.tourHeaders.indexOf($scope.newTour) != -1){
+                    $scope.newTour = '';
+                }else{
+                    $scope.table.tourHeaders.push($scope.newTour.toDateString());
+                    $scope.table.tourHeaders.sort(function(a,b){
+                        return new Date(a) - new Date(b);
+                    });
+                    $scope.newTour = '';
+                }
+            };
         };
         $scope.addCommand = function(){
             if($scope.table.commands.indexOf($scope.newCommand) != -1){
